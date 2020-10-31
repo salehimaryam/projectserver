@@ -1,20 +1,16 @@
 "use strict";
 module.exports = (sequelize,DataTypes) => {
-    const author = sequelize.define("author",{
-      firstname:{
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      lastname:{
-          type: DataTypes.STRING,
-          allowNull: false,
-      },
+    const authors = sequelize.define("authors",{
       username:{
           type: DataTypes.STRING,
           allowNull: false,
       },
-      UserId:{
+     password:{
           type: DataTypes.STRING,
+          allowNull: false,
+      },
+      email:{
+          type:DataTypes.STRING,
           allowNull: false,
       },
     },
@@ -23,5 +19,11 @@ module.exports = (sequelize,DataTypes) => {
         collate: "utf8_general_ci",
       }
     );
-    return author;
+    authors.associate = function (models) {
+      
+        authors.hasMany(models.post, {
+            foreignKey: "userID"
+        });
+    };
+    return authors;
 }

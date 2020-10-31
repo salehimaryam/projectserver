@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       collate: "utf8_general_ci",
     }
   );
-  
+  post.associate = function (models) {
+      post.belongsTo(models.authors, {
+          foreignKey: "userID"
+      });
+    
+  };
   return post;
 };

@@ -1,23 +1,25 @@
 <html>
     <body>
         <h3>create: </h3>
-        <form action="" method="POST">
+        <form action="/post/createpost" method="POST">
             title: <input type="text" name="title" />
             body: <textarea type="text" name="body" > </textarea>
-            UserID: <input type="text" name="UserTD" />
+            UserID: <input type="text" name="userID" />
             <button type="submit">send</button>
         </form></br>
 
         <h3>Edit: </h3>
-        <form action="" method="POST">
+        <form action="/post/editpost" method="POST">
+            id: <input type="text" name="id" />
             title: <input type="text" name="title" />
             body: <textarea type="text" name="bode"> </textarea>
-            UserID: <input type="text" name="UserID" />
+            UserID: <input type="text" name="userID" />
             <button type="submit">send</button>
         </form></br>
+
         <h3>Delete</h3>
-        <form action="" method="POST">
-            <input type="text" name="id" />
+        <form action="/post/deletepost" method="POST">
+           id: <input type="text" name="id" />
             <button type="submit"> send</button>
         </form></br>
     </body>

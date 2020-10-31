@@ -1,10 +1,13 @@
-const path = require('path');
-require("./models/index")
-const express = require("express");
+require('./models/index');
+const express = require('express');
 const app = express();
-
-app.get('/',function(req,res){
-    res.sendFile(path.resolve(__dirname, "./views/admin.html"));
-});
-
-app.listen (3000);
+const post = express.Router();
+const author = express.Router();
+const postRouter = require("./route/post")(post);
+const authorRouter = require("./route/author")(author);
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/post",postRouter);
+app.use("/author",authorRouter);
+app.listen(3000);
