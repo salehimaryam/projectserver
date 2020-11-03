@@ -22,5 +22,25 @@
            id: <input type="text" name="id" />
             <button type="submit"> send</button>
         </form></br>
+        
+        <div id="output"></div>
+        <button onclick="alaki()">send</button>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
+        <script>
+
+        function alaki(){
+        axios.post('/post/showpost',"NEW")
+        .then(function (res) {
+            console.log(res.data);
+        document.getElementById("output").innerHTML = JSON.stringify(res.data);
+      
+        })
+        .catch(function (err) {
+            console.log(err)
+        
+        });
+        };
+        </script>
+        
     </body>
 </html>

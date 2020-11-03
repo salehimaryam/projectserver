@@ -45,5 +45,11 @@ class postcontroller {
             })
         .catch(error=>console.log(error))
     }
+    static showpost (req,res){
+        post.findAll()
+        .then(queryResult=>
+            res.send(queryResult))
+            .catch(error=>console.log(error));
+    }
 }
 module.exports = postcontroller;

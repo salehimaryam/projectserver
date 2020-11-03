@@ -13,5 +13,8 @@ module.exports = (router)=>{
       router.post("/editpost",function(req,res){
         postcontroller.editpost(req,res);
       });
+      router.post("/showpost" , function(req,res){
+        postcontroller.showpost(req,res);
+      });
       return router;
 };
