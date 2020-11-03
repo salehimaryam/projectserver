@@ -24,11 +24,11 @@
         </form></br>
         
         <div id="output"></div>
-        <button onclick="alaki()">send</button>
+        <button onclick="show()">send</button>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
         <script>
 
-        function alaki(){
+        function show(){
         axios.post('/post/showpost',"NEW")
         .then(function (res) {
             console.log(res.data);
