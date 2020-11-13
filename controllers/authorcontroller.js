@@ -2,9 +2,6 @@ const path = require("path");
 const authors = require("../models").authors;
 const jwt = require("jsonwebtoken");
 class authorcontroller {
-  static getauthor(req, res) {
-    res.sendFile(path.resolve(__dirname, "../views/author.html"));
-  }
   static register(req, res) {
     authors
       .findAll({
@@ -19,6 +16,7 @@ class authorcontroller {
               username: req.body.username,
               password: req.body.password,
               email: req.body.email,
+              
             })
             .then((queryResult) => {
               res.send("ثبت نام با موفقیت انجام شد.");
@@ -29,6 +27,7 @@ class authorcontroller {
         }
       });
   }
+
   static login(req, res) {
     authors
       .findAll({
@@ -46,5 +45,12 @@ class authorcontroller {
         }
       });
   }
+
+  static showauthor (req,res){
+  authors.findAll()
+    .then(queryResult=>
+        res.send(queryResult))
+        .catch(error=>console.log(error));
+}
 }
 module.exports = authorcontroller;

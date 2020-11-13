@@ -1,15 +1,16 @@
 const path = require('path');
 const post = require("../models").post;
 class postcontroller {
-    static getpost(req, res) {
+    static getPost(req, res) {
         res.sendFile(path.resolve(__dirname, "../views/post.html"));
       }
-    static createpost(req,res){
+    static createPost(req,res){
         console.log(req.body)
         post.create({
             title:req.body.title,
             body:req.body.body,
             userID:req.body.userID,
+            image:req.body.image
         })
         .then(queryResult =>{
             res.send(queryResult)
@@ -17,11 +18,12 @@ class postcontroller {
         .catch(error=>console.log(error))
     }
 
-    static editpost(req,res){
+    static editPost(req,res){
         post.update({
             title:req.body.title,
             body:req.body.body,
-            userID:req.body.userID
+            userID:req.body.userID,
+            image:req.body.image
         },
         {
             where: {
@@ -34,7 +36,7 @@ class postcontroller {
         .catch(error=>console.log(error));
     }
 
-    static deletepost(req, res) {
+    static deletePost(req, res) {
         post.destroy({
             where: {
                 id:req.body.id
@@ -45,7 +47,7 @@ class postcontroller {
             })
         .catch(error=>console.log(error))
     }
-    static showpost (req,res){
+    static showPost (req,res){
         post.findAll()
         .then(queryResult=>
             res.send(queryResult))
